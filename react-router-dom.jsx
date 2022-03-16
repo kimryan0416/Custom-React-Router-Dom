@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-export default class REACT_DOM_ROUTER {
+export default class REACT_ROUTER_DOM {
 	static myInstance = null;
 	_BROWSERROUTER = null;
 	_UPDATEPAGES = [];
 	_CURRENT_PAGE = null;
 
 	static getInstance() {
-		if (REACT_DOM_ROUTER.myInstance == null) {
-			REACT_DOM_ROUTER.myInstance = new REACT_DOM_ROUTER();
+		if (REACT_ROUTER_DOM.myInstance == null) {
+			REACT_ROUTER_DOM.myInstance = new REACT_ROUTER_DOM();
 		}
 		return this.myInstance;
 	}
@@ -46,7 +46,7 @@ export class BrowserRouter extends Component {
 	  this.state = {
 		  _CURRENT_PAGE: '/'
 	  }
-	  this.router = REACT_DOM_ROUTER.getInstance();
+	  this.router = REACT_ROUTER_DOM.getInstance();
 	  this.router._initialize(this, this.state._CURRENT_PAGE);
   }
   updatePage = (newPage = '/') => {
@@ -62,7 +62,7 @@ export class BrowserRouter extends Component {
 export class Switch extends Component {
   constructor(props) {
 	super(props);
-	this.router = REACT_DOM_ROUTER.getInstance();
+	this.router = REACT_ROUTER_DOM.getInstance();
 	this.state = {
 	  _CURRENT_PAGE: this.router._getPage()
 	}
@@ -93,7 +93,7 @@ export class Switch extends Component {
 export class Route extends Component {
   constructor(props) {
 		super(props);
-		this.router = REACT_DOM_ROUTER.getInstance();
+		this.router = REACT_ROUTER_DOM.getInstance();
 		this.state = {
 		  _CURRENT_PAGE: this.router._getPage()
 		}
@@ -121,7 +121,7 @@ export class Route extends Component {
 }
 
 export function Link(props) {
-  const router = REACT_DOM_ROUTER.getInstance();
+  const router = REACT_ROUTER_DOM.getInstance();
   const { to, children } = props; 
   return (
     <a onClick={()=>{router._setPage(to)}}>
